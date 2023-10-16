@@ -10,7 +10,12 @@ repositories {
     mavenCentral()
 }
 
+object Versions {
+    const val KOTEST = "5.7.2"
+}
+
 dependencies {
+    testImplementation("io.kotest:kotest-runner-junit5:${Versions.KOTEST}")
     testImplementation(kotlin("test"))
 }
 
