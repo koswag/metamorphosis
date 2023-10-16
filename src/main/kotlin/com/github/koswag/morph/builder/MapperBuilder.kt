@@ -1,15 +1,10 @@
-package mapper.builder
+package com.github.koswag.morph.builder
 
 import kotlin.reflect.KProperty1
 
 interface MapperBuilder<Source : Any, Target : Any> {
-
-    companion object {
-        data class TransformationBuilder<Source : Any, SourceProp, Target : Any, TargetProp>(
-            val sourceProp: KProperty1<Source, SourceProp>,
-            val targetProp: KProperty1<Target, TargetProp>,
-        )
-    }
+    var inferMissingMappings: Boolean
+    var allowIncompleteMapping: Boolean
 
     fun <Prop> mapping(
         sourceProp: KProperty1<Source, Prop>,
@@ -38,4 +33,11 @@ interface MapperBuilder<Source : Any, Target : Any> {
         transformation(sourceProp, targetProp, transform)
     }
 
+
+    companion object {
+        data class TransformationBuilder<Source : Any, SourceProp, Target : Any, TargetProp>(
+            val sourceProp: KProperty1<Source, SourceProp>,
+            val targetProp: KProperty1<Target, TargetProp>,
+        )
+    }
 }
