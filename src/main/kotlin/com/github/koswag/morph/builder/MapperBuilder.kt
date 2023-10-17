@@ -1,5 +1,7 @@
 package com.github.koswag.morph.builder
 
+import com.github.koswag.morph.Mapper
+import kotlin.reflect.KClass
 import kotlin.reflect.KProperty1
 
 interface MapperBuilder<Source : Any, Target : Any> {
@@ -16,6 +18,8 @@ interface MapperBuilder<Source : Any, Target : Any> {
         targetProp: KProperty1<Target, TargetProp>,
         transform: (SourceProp) -> TargetProp,
     )
+
+    fun build(): Mapper<Source, Target>
 
 
     infix fun <Prop> KProperty1<Source, Prop>.mappedTo(targetProp: KProperty1<Target, Prop>) {
