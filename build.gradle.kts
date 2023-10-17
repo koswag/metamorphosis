@@ -17,6 +17,7 @@ object Versions {
 dependencies {
     testImplementation("io.kotest:kotest-runner-junit5:${Versions.KOTEST}")
     testImplementation(kotlin("test"))
+    implementation(kotlin("reflect"))
 }
 
 tasks.test {
