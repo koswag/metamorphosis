@@ -43,5 +43,13 @@ interface MapperBuilder<Source : Any, Target : Any> {
             val sourceProp: KProperty1<Source, SourceProp>,
             val targetProp: KProperty1<Target, TargetProp>,
         )
+
+        operator fun <Source : Any, Target : Any> invoke(
+            sourceClass: KClass<Source>,
+            targetClass: KClass<Target>,
+            block: MapperBuilder<Source, Target>.() -> Unit
+        ): MapperBuilder<Source, Target> =
+            MapperBuilderImpl(sourceClass, targetClass)
+                .apply(block)
     }
 }
