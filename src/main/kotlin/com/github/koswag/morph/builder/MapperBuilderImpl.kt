@@ -17,7 +17,6 @@ internal class MapperBuilderImpl<Source : Any, Target : Any>(
 ) : MapperBuilder<Source, Target> {
 
     override var inferMissingMappings = DEFAULT_MAPPING_INFERENCE_FLAG
-    override var allowIncompleteMapping = DEFAULT_INCOMPLETE_MAPPING_FLAG
 
     private val mappings = mutableListOf<PropertyMapping<Source, *, *>>()
 
@@ -46,10 +45,7 @@ internal class MapperBuilderImpl<Source : Any, Target : Any>(
             inferMissingMappings()
         }
 
-        if (!allowIncompleteMapping) {
-            validateMappings()
-        }
-
+        validateMappings()
         return MapperImpl(targetClass, mappings)
     }
 
@@ -92,7 +88,6 @@ internal class MapperBuilderImpl<Source : Any, Target : Any>(
 
     companion object {
         private const val DEFAULT_MAPPING_INFERENCE_FLAG = true
-        private const val DEFAULT_INCOMPLETE_MAPPING_FLAG = false
     }
 
 }

@@ -6,7 +6,6 @@ import kotlin.reflect.KProperty1
 
 interface MapperBuilder<Source : Any, Target : Any> {
     var inferMissingMappings: Boolean
-    var allowIncompleteMapping: Boolean
 
     fun <Prop> mapping(
         sourceProp: KProperty1<Source, Prop>,
