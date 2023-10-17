@@ -5,6 +5,7 @@ import com.github.koswag.morph.MapperImpl
 import com.github.koswag.morph.PropertyMapping
 import com.github.koswag.morph.PropertyMapping.DirectMapping
 import com.github.koswag.morph.PropertyMapping.TransformMapping
+import com.github.koswag.morph.exception.IncompleteMappingException
 import com.github.koswag.morph.util.getFields
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
@@ -69,11 +70,7 @@ internal class MapperBuilderImpl<Source : Any, Target : Any>(
         val unmappedTargets = getUnmappedTargets()
 
         if (unmappedTargets.isNotEmpty()) {
-            val unmappedTargetsFmt = unmappedTargets.joinToString {
-                "${targetClass.simpleName}::${it.name}: ${it.returnType}"
-            }
-
-            error("There are missing mappings for properties - $unmappedTargetsFmt")
+            throw IncompleteMappingException(targetClass, unmappedTargets)
         }
     }
 
