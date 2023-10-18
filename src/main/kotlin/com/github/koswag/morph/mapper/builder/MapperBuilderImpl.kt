@@ -1,10 +1,10 @@
-package com.github.koswag.morph.builder
+package com.github.koswag.morph.mapper.builder
 
-import com.github.koswag.morph.Mapper
-import com.github.koswag.morph.MapperImpl
-import com.github.koswag.morph.PropertyMapping
-import com.github.koswag.morph.PropertyMapping.DirectMapping
-import com.github.koswag.morph.PropertyMapping.TransformMapping
+import com.github.koswag.morph.mapper.Mapper
+import com.github.koswag.morph.mapper.MapperImpl
+import com.github.koswag.morph.mapper.PropertyMapping
+import com.github.koswag.morph.mapper.PropertyMapping.DirectMapping
+import com.github.koswag.morph.mapper.PropertyMapping.TransformMapping
 import com.github.koswag.morph.exception.IncompleteMappingException
 import com.github.koswag.morph.util.getFields
 import kotlin.reflect.KClass

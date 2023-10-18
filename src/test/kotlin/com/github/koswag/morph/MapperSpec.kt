@@ -1,6 +1,7 @@
 package com.github.koswag.morph
 
 import com.github.koswag.morph.exception.IncompleteMappingException
+import com.github.koswag.morph.mapper.Mapper
 import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.core.spec.style.FeatureSpec
 import io.kotest.matchers.collections.shouldContainOnly

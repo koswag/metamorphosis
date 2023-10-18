@@ -1,6 +1,6 @@
-package com.github.koswag.morph
+package com.github.koswag.morph.mapper
 
-import com.github.koswag.morph.builder.MapperBuilder
+import com.github.koswag.morph.mapper.builder.MapperBuilder
 
 interface Mapper<Source : Any, Target : Any> : (Source) -> Target {
     fun map(source: Source): Target

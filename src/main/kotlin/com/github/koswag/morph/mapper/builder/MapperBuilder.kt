@@ -1,6 +1,6 @@
-package com.github.koswag.morph.builder
+package com.github.koswag.morph.mapper.builder
 
-import com.github.koswag.morph.Mapper
+import com.github.koswag.morph.mapper.Mapper
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty1
 
