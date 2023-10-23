@@ -26,7 +26,7 @@ interface MapperBuilder<Source : Any, Target : Any> {
     /**
      * Registers a mapping transforming [sourceProp] to [targetProp] using [transform] function.
      */
-    fun <SourceProp, TargetProp> transformation(
+    fun <SourceProp, TargetProp> mapping(
         sourceProp: KProperty1<Source, SourceProp>,
         targetProp: KProperty1<Target, TargetProp>,
         transform: (SourceProp) -> TargetProp,
@@ -69,7 +69,7 @@ interface MapperBuilder<Source : Any, Target : Any> {
     infix fun <SourceProp, TargetProp> TransformationBuilder<Source, SourceProp, Target, TargetProp>.using(
         transform: (SourceProp) -> TargetProp,
     ) {
-        transformation(sourceProp, targetProp, transform)
+        mapping(sourceProp, targetProp, transform)
     }
 
 

@@ -30,7 +30,7 @@ internal class MapperBuilderImpl<Source : Any, Target : Any>(
         )
     }
 
-    override fun <SourceProp, TargetProp> transformation(
+    override fun <SourceProp, TargetProp> mapping(
         sourceProp: KProperty1<Source, SourceProp>,
         targetProp: KProperty1<Target, TargetProp>,
         transform: (SourceProp) -> TargetProp
