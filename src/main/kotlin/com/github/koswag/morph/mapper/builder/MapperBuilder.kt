@@ -40,6 +40,14 @@ interface MapperBuilder<Source : Any, Target : Any> {
 
 
     /**
+     * Builds a mapper, inferring missing mappings when [inferMissingMappings] is set to `true`,
+     * catching all mapping validation errors.
+     */
+    fun buildCatching(): Result<Mapper<Source,Target>> =
+        runCatching { build() }
+
+
+    /**
      * Registers a direct property mapping.
      * @receiver source property of type [Prop]
      * @param [targetProp] target property of type [Prop]
