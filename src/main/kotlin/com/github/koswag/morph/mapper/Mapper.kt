@@ -32,7 +32,15 @@ interface Mapper<Source : Any, Target : Any> : (Source) -> Target {
 
     companion object {
         /**
-         * Builds a mapper from type [Source] to type [Target] catching any validation error.
+         * Builds a mapper from type [Source] to type [Target] via property mapping inference
+         * catching any mapping validation error.
+         * @return Mapper from type [Source] to type [Target] wrapped in a [Result]
+         */
+        inline fun <reified Source : Any, reified Target : Any> buildCatching(): Result<Mapper<Source, Target>> =
+            buildCatching { }
+
+        /**
+         * Builds a mapper from type [Source] to type [Target] catching any mapping validation error.
          * @param mappingBlock mapper builder block
          * @return Mapper from type [Source] to type [Target] wrapped in a [Result]
          */
@@ -40,6 +48,14 @@ interface Mapper<Source : Any, Target : Any> : (Source) -> Target {
             noinline mappingBlock: MapperBuilder<Source, Target>.() -> Unit,
         ): Result<Mapper<Source, Target>> =
             runCatching { Mapper(mappingBlock) }
+
+
+        /**
+         * Builds a mapper from type [Source] to type [Target] via property mapping inference.
+         * @return Mapper from type [Source] to type [Target]
+         */
+        inline operator fun <reified Source : Any, reified Target : Any> invoke(): Mapper<Source, Target> =
+            Mapper { }
 
         /**
          * Builds a mapper from type [Source] to type [Target].
